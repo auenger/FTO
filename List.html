@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>️请假详情</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="icon/css/all.css" />
+		<link rel="stylesheet" type="text/css" href="css/customer.css" />
+		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
+		<script src="icon/js/all.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script src="js/customer.js"></script>
+		<script src="js/localstorage.js"></script>
+	</head>
+	<body>
+		<div class="to-header">
+			<table width="100%" style="text-align: center;">
+				<tr>
+					<td width="10%" style="vertical-align: middle;line-height: 40px;font-size: x-large;">
+					</td>
+					<td width="10%">
+					</td>
+					<td>
+						<p style="font-weight: 500;font-size: large;"><i class="fas fa-list"></i> 假单列表</p>
+					</td>
+					<td width="20%">
+					</td>
+				</tr>
+			</table>
+			</br>
+		</div>
+		<div style="height: 80px;"></div>
+		<div class="to-list">
+
+		</div>
+		<div class="to-bottom-btn">
+			<br>
+			<br>
+			<br>
+			<button type="button" onclick="window.location.href = 'create.html'" style="background-color: #4e9ff6;color: #fff;">新建假单</button>
+			<br>
+			<br>
+			<br>
+		</div>
+		<script type="text/javascript">
+			loadList();
+
+			function loadList() {
+				var Lists = GetKeys();
+				if (Lists == null || Lists.length < 1) {
+					return;
+				}
+				Lists = Lists.split(',');
+				loadListItem(Lists);
+			}
+
+			function loadListItem(Lists) {
+				var billhtml = "";
+				for (var i = 0; i < Lists.length; i++) {
+					var key = Lists[i];
+					if (key.length > 0) {
+						var check = GetTo(key);
+						if (check != null) {
+							billhtml +=
+								'<div class="to-item"><p>假单状态:' + check.mation_status +
+								'</p><p>开始-结束时间:' + check.detail_kssj + '~' + check.detail_jssj +
+								'</p><table width="100%"><tr><td><button onclick="viewCheck(\'' + check.id +
+								'\')" type="button"><i class="fas fa-calendar-check"></i>&nbsp查看</button></td><td><button  onclick="editCheck(\'' +
+								check.id +
+								'\')"  type="button"><i class="fas fa-edit"></i>&nbsp修改</button></td><td><button  onclick="delCheck(\'' + check
+								.id + '\')"  type="button"><i class="fas fa-times-circle"></i>&nbsp删除</button></td></tr></table></div>';
+						}
+					}
+				}
+				$(".to-list").html(billhtml);
+			}
+
+			function delCheck(id) {
+				DeletedKey(id);
+				location.reload();
+			}
+
+			function viewCheck(id) {
+				var check = GetTo(id);
+				if (check.mation_status == "休假中") {
+					window.location.href = "index.html?id=" + id;
+				} else {
+					window.location.href = "checked.html?id=" + id;
+				}
+			}
+
+			function editCheck(id) {
+				window.location.href = "create.html?id=" + id;
+			}
+		</script>
+
+
+
+
+
+
+
+	</body>
+</html>

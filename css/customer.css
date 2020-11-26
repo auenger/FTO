@@ -14,14 +14,28 @@
 	font-weight: 600;
 }
 
-.to-status {
+.to-status-detail {
 	color: #fff;
 	text-align: center;
 	background-color: #3f8d59;
 	background: -webkit-gradient(linear, 0 0, 0 70%, from(#3f8d59), to(#5cb85c));
 }
 
-.progress-bar {
+.to-status-checked {
+	color: #fff;
+	text-align: center;
+	background-color: dimgrey;
+	background: -webkit-gradient(linear, 0 0, 0 70%, from(dimgrey), to(rgba(0,0,0,.4)));
+}
+.progress-bar-info {
+    background-color: rgba(0,0,0,.4) !important;
+}
+.progress-to-detail {
+	padding-top: 5px;
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, .9) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .9) 50%, rgba(255, 255, 255, .9) 75%, transparent 75%, transparent) !important;
+}
+
+.progress-to-checked {
 	padding-top: 5px;
 	background-image: linear-gradient(45deg, rgba(255, 255, 255, .9) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .9) 50%, rgba(255, 255, 255, .9) 75%, transparent 75%, transparent) !important;
 }
@@ -101,4 +115,51 @@
 }
 .timeline{
 	margin-top: 18px;
+}
+.to-bottom-btn{
+	padding-left: 20px;
+	background-color: rgba(243, 248, 247,.5);
+}
+
+.to-bottom-btn button{
+	width: 95%;
+	border: rgba(0,0,0,0.1) 1px solid;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.to-form{
+	padding-left: 20px;
+}
+.to-form table{
+	width: 95%;
+}
+.to-form input{
+	border: none;
+	width: 80%;
+	padding: 5px;
+	margin-left: 10px;
+}
+.to-form tr{
+	line-height: 30px;
+	border-bottom: rgba(0,0,0,0.1) 1px dashed;
+}
+#mation_status{
+	width: 60%;
+}
+.to-item{
+	margin-left: 2%;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 95%;
+	border: rgba(0,0,0,0.1) 1px dashed;
+	margin-bottom: 10px;
+}
+.to-item td{
+	text-align: center;
 }

@@ -44,13 +44,13 @@
 				<table width="100%" style="text-align: center;">
 					<tr>
 						<td width="10%" style="vertical-align: middle;line-height: 40px;font-size: x-large;">
-							<p onclick="backToList()"><i class="fas fa-angle-left"></i></p>
+							<p><i class="fas fa-angle-left"></i></p>
 						</td>
 						<td width="10%">
 							<p onclick="backToList()" style="font-weight: 500;">X</p>
 						</td>
 						<td>
-							<p style="font-weight: 500;font-size: large;"><i class="fas fa-calendar-check"></i> 请假详情</p>
+							<p  onclick="backToList()" style="font-weight: 500;font-size: large;"><i class="fas fa-calendar-check"></i> 请假详情</p>
 						</td>
 						<td width="20%">
 							<p style="color: #2FA8EC;">反馈</p>
@@ -72,15 +72,12 @@
 				</br>
 			</div>
 			<div style="height: 110px;"></div>
-			<div class="to-check-tips">
-				<p><i class="fas fa-question-circle"></i> 如何销假？→</p>
-			</div>
-			<div class="to-status-detail">
+			<div class="to-status-checked">
 				</br>
 				<p><i class="fas fa-check-circle"></i> 审 批 已 通 过</p>
-				<p style="font-size: xx-large;">正在休假中</p>
+				<p style="font-size: xx-large;">已 完 成</p>
 				<div class="progress">
-					<div class="progress-to-detail progress-bar progress-bar-success progress-bar-striped active" style="width:100%;">
+					<div class="progress-to-checked  progress-bar progress-bar-info progress-bar-striped active" style="width:100%;">
 						<div class="to-status-clock">当前时间：2020-11-23 23:41:09</div>
 					</div>
 				</div>
@@ -102,7 +99,9 @@
 				<div class="td_item">销假规则：<p style="color: orange;" id="mation_xjgz">离校请假需要销假，非离校请假无需销假</p>
 					<p style="color: #4e9ff6;">&nbsp;查看 ></p>
 				</div>
-				<div class="td_item">实际休假时间：<p id="mation_sjxjsj"></p>
+				<div class="td_item">实际休假时间：<p id="mation_sjxjsj">
+						11-23 23:41 ~ 11-24 23:41 (共24小时)
+					</p>
 				</div>
 			</div>
 			<div class="to-br"></div>
@@ -149,7 +148,7 @@
 					<tr>
 						<td>
 							<div class="td_item">发起位置：
-								<p style="color: #4e9ff6;;" id="detail_fqwz">中国安徽省合肥市瑶海区梦溪路</p>
+								<p style="color: #4e9ff6;" id="detail_fqwz">中国安徽省合肥市瑶海区梦溪路</p>
 							</div>
 						</td>
 					</tr>
@@ -200,7 +199,7 @@
 										</div>
 									</td>
 									<td style="text-align: right;">
-										<p id="review_yjspr_sj">11-24 01:41</p>
+										<p id="review_sqr_sj">11-24 01:41</p>
 									</td>
 								</tr>
 								<tr>
@@ -229,7 +228,7 @@
 										</div>
 									</td>
 									<td style="text-align: right;">
-										<p id="review_ejspr_sj">11-24 01:41</p>
+										<p id="review_sqr_sj">11-24 01:41</p>
 									</td>
 								</tr>
 								<tr>
@@ -242,21 +241,39 @@
 							</table>
 						</div>
 					</div>
+
+					<div class="timeline-item">
+						<div class="timeline-point timeline-point-info">
+						</div>
+						<div class="to-timeline-event">
+							<table width="100%">
+								<tr>
+									<td width="70%">
+										<div style="display: flex;">
+											<p id="review_xjr">曹宏星</p>
+											<p> - 销假成功</p>
+										</div>
+									</td>
+									<td style="text-align: right;">
+										<p id="review_sqr_xjsj">11-24 01:41</p>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="to-br"></div>
 			<div class="to-check">
 				<p>销假信息</p>
-				<div class="td_item">所在位置：<p id="check_szwz"></p>
+				<div class="td_item">所在位置：<p style="color: #4e9ff6;" id="check_xjwz">中国安徽省合肥市瑶海区梦溪路</p>
 				</div>
 			</div>
 			<div class="to-bottom-btn">
 				<br>
 				<br>
 				<br>
-				<button type="button" style="background-color: #4e9ff6;color: #fff;">去销假</button>
-				<button type="button">申请续假</button>
-				<button type="button">转发</button>
+				<button type="button" style="background-color: #4e9ff6;color: #fff;">转发</button>
 				<br>
 				<br>
 				<br>
@@ -267,10 +284,10 @@
 				if (billId == null || billId.length < 1) {
 					alert("未找到请假单，请重新创建")
 				} else {
-					loadIndexData();
+					loadCheckedData();
 				}
 
-				function loadIndexData() {
+				function loadCheckedData() {
 					var bill = GetTo(billId);
 					$("#mation_status").html(bill.mation_status);
 					$("#review_sqr").html(bill.review_sqr);
@@ -290,8 +307,10 @@
 					$("#detail_qjyy").html(bill.detail_qjyy);
 					$("#detail_fqwz").html(bill.detail_fqwz);
 					$("#detail_ccr").html(bill.detail_ccr);
+					$("#review_sqr_xjsj").html(bill.review_sqr_xjsj);
+					$("#check_xjwz").html(bill.check_xjwz);
+					$("#review_xjr").html(bill.review_sqr);
 				}
 			</script>
-
 	</body>
 </html>
